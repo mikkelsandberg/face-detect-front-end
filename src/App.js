@@ -51,7 +51,6 @@ class App extends Component {
 	};
 
 	calcFaceLocation = data => {
-		console.log(data);
 		const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
 		const image = document.getElementById('userImage');
 		const width = Number(image.width);
@@ -78,7 +77,7 @@ class App extends Component {
 			imageUrl: this.state.input
 		});
 
-		fetch('http://localhost:4000/imageUrl', {
+		fetch('https://shrouded-badlands-12566.herokuapp.com/imageUrl', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'
@@ -90,7 +89,7 @@ class App extends Component {
 			.then(response => response.json())
 			.then(response => {
 				if (response) {
-					fetch('http://localhost:4000/image', {
+					fetch('https://shrouded-badlands-12566.herokuapp.com/image', {
 						method: 'put',
 						headers: {
 							'Content-Type': 'application/json'
